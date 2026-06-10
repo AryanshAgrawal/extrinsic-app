@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, Loader2, ArrowRight } from 'lucide-react';
-import '../styles/auth.css'; // We'll create this file next
+import '../styles/auth.css';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -19,9 +19,9 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/auth/login`, {
+      const response = await api.post('/api/auth/login', {
         username,
-        password
+        password,
       });
 
       login(response.data.token, response.data.user);

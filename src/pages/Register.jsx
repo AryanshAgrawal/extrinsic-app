@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../lib/api';
 import { useAuth } from '../context/AuthContext';
 import { User, Lock, Loader2, ArrowRight } from 'lucide-react';
 import '../styles/auth.css';
@@ -26,19 +26,12 @@ export default function Register() {
     setIsLoading(true);
 
     try {
-      // First register
-      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/auth/register`, {
+      const response = await api.post('/api/auth/register', {
         username,
-        password
+        password,
       });
 
-      // Then automatically log them in
-      const loginRes = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/auth/login`, {
-        username,
-        password
-      });
-
-      login(loginRes.data.token, loginRes.data.user);
+      login(response.data.token, response.data.user);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.error || 'Registration failed. Try again.');
