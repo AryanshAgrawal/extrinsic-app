@@ -1,0 +1,19 @@
+Suggested commit title: feat(ui): add landing page, pricing, testimonials, and enhanced dashboard
+
+Suggested commit body:
+- Add public landing page with PricingTable and TestimonialCarousel
+- Implement orange/black theme and global micro-interactions
+- Upgrade dashboard visuals (leaderboard, recent activity)
+- Enhance TaskList and RewardStore with progress bars, badges, and hover effects
+- Update routing: landing at `/`, dashboard at `/dashboard` and redirects from login/register
+
+Commands to run locally:
+
+```bash
+git add .
+git commit -m "feat(ui): add landing page, pricing, testimonials, and enhanced dashboard"
+# push to your remote (e.g. origin main)
+git push origin main
+```
+
+If you want, I can prepare a short PR description for GitHub or create a patch file instead.
